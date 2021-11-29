@@ -1,0 +1,264 @@
+import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:get/get_core/src/get_main.dart';
+import 'package:get/get_navigation/src/extension_navigation.dart';
+import 'package:googler_maps_in_flutter/view/carousel_slider_example.dart';
+
+class PackageSelection extends StatefulWidget {
+  const PackageSelection({Key? key}) : super(key: key);
+  @override
+  _PackageSelectionState createState() => _PackageSelectionState();
+}
+
+class _PackageSelectionState extends State<PackageSelection> {
+  @override
+  Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
+    return Scaffold(
+      body: Stack(
+        children: [
+          Container(
+            height: size.height,
+            width: size.width,
+            decoration: BoxDecoration(
+              image: DecorationImage(
+                  image: AssetImage("images/map2.png"), fit: BoxFit.fill),
+            ),
+          ),
+          SafeArea(
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 10),
+              child: InkWell(
+                onTap: () {
+                  Get.back(result: "ok");
+                },
+                child: CircleAvatar(
+                  backgroundColor: Color(0xfffe8550),
+                  child: Icon(
+                    Icons.arrow_back,
+                    color: Colors.white,
+                  ),
+                ),
+              ),
+            ),
+          ),
+          Align(
+            alignment: Alignment.bottomCenter,
+            child: Container(
+              height: size.height * .4,
+              width: size.width,
+              color: Colors.transparent,
+              child: Padding(
+                padding: const EdgeInsets.only(bottom: 10),
+                child: Column(
+                  children: [
+                    Expanded(
+                      flex: 4,
+                      child: _listView(size.height),
+                    ),
+                    Expanded(
+                      flex: 1,
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 10),
+                        child: SizedBox(
+                          height: size.height,
+                          width: size.width,
+                          child: ElevatedButton(
+                            style: ElevatedButton.styleFrom(
+                              primary: Color(0xfffe8550),
+                              shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(30)),
+                              //padding:EdgeInsets.all(20)
+                            ),
+                            onPressed: () {
+                              Get.to(PackageSelection());
+                            },
+                            child: Text("Search"),
+                          ),
+                        ),
+                      ),
+                    )
+                  ],
+                ),
+              ),
+            ),
+          )
+        ],
+      ),
+    );
+  }
+
+  Widget _listView(var size) {
+    return Container(
+        margin: EdgeInsets.symmetric(vertical: 10.0),
+        height: size, //200.0,
+        child: new ListView(
+          scrollDirection: Axis.horizontal,
+          children: <Widget>[
+            InkWell(
+              onTap: () {},
+              child: Padding(
+                padding: const EdgeInsets.only(left: 10),
+                child: Container(
+                  width: 140.0,
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(15),
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.grey.withOpacity(.5),
+                        spreadRadius: 5,
+                        blurRadius: 10,
+                        offset: Offset(5, 5), // changes position of shadow
+                      ),
+                    ],
+                  ),
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 20),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        Container(
+                          height: 100,
+                          width: 100,
+                          decoration: BoxDecoration(
+                              image: DecorationImage(
+                                  image: AssetImage("images/UberX.jpeg"))
+                              //color: Color(0xfffe8550),
+                              //shape: BoxShape.circle,
+                              ),
+                        ),
+                        Text(
+                          "Economy",
+                          style: TextStyle(
+                              color: Colors.black,
+                              fontWeight: FontWeight.bold,
+                              fontSize: 20),
+                        ),
+                        Row(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text(
+                              "US\$90",
+                              style: TextStyle(
+                                color: Colors.grey,
+                                fontWeight: FontWeight.bold,
+                                fontSize: 10,
+                              ),
+                            ),
+                            SizedBox(
+                              width: 10,
+                            ),
+                            Icon(
+                              FontAwesomeIcons.userAlt,
+                              color: Color(0xfffe8550),
+                              size: 10,
+                            ),
+                            Text(
+                              " 4",
+                              style: TextStyle(
+                                  color: Colors.grey,
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 10),
+                            ),
+                          ],
+                        )
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+            ),
+            SizedBox(
+              width: 10,
+            ),
+            InkWell(
+              onTap: () {},
+              child: Container(
+                width: 140.0,
+                //color: Colors.orange,
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  //Color(0xfffff4ef),
+                  borderRadius: BorderRadius.circular(15),
+                ),
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 20),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      Container(
+                        height: 100,
+                        width: 100,
+                        decoration: BoxDecoration(
+                            image: DecorationImage(
+                                image: AssetImage("images/UberX.jpeg"))
+                            //color: Color(0xfffe8550),
+                            //shape: BoxShape.circle,
+                            ),
+                      ),
+                      Text(
+                        "Premium",
+                        style: TextStyle(
+                            color: Colors.black,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 20),
+                      ),
+                      Row(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            "US\$90",
+                            style: TextStyle(
+                                color: Colors.grey,
+                                fontWeight: FontWeight.bold,
+                                fontSize: 10),
+                          ),
+                          SizedBox(
+                            width: 10,
+                          ),
+                          Icon(
+                            FontAwesomeIcons.userAlt,
+                            color: Color(0xfffe8550),
+                            size: 10,
+                          ),
+                          Text(
+                            " 4",
+                            style: TextStyle(
+                                color: Colors.grey,
+                                fontWeight: FontWeight.bold,
+                                fontSize: 10),
+                          ),
+                        ],
+                      )
+                    ],
+                  ),
+                ),
+              ),
+            ),
+            SizedBox(
+              width: 10,
+            ),
+            InkWell(
+              onTap: () {},
+              child: Container(
+                width: 140.0,
+                //olor: Colors.pink,
+                decoration: BoxDecoration(
+                  color: Color(0xfffff4ef),
+                  borderRadius: BorderRadius.circular(15),
+                ),
+              ),
+            ),
+            SizedBox(
+              width: 10,
+            ),
+            //Container(width: 160.0, color: Colors.yellow,),
+          ],
+        ));
+  }
+}
