@@ -30,20 +30,23 @@ class RecentItemsList {
         rating: '4.9',
         ratingTotal: '(124 ratings)',
         type: 'Cafe',
-        label: 'Western Food'),
+        label: 'Western Food',
+    ),
     RecentItemsList(
         imagePath: 'images/res1.png',
         name: 'Minute by tuk tuk',
         rating: '4.9',
         ratingTotal: '(124 ratings)',
         type: 'Cafe',
-        label: 'Western Food'),
+        label: 'Western Food',
+    ),
     RecentItemsList(
         imagePath: 'images/res1.png',
         name: 'Minute by tuk tuk',
         rating: '4.9',
         ratingTotal: '(124 ratings)',
         type: 'Cafe',
-        label: 'Western Food')
+        label: 'Western Food',
+    )
   ];
 }

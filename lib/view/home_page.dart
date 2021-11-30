@@ -5,12 +5,12 @@ import 'package:googler_maps_in_flutter/model/home_scroll_list.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:googler_maps_in_flutter/view/routeSelection_page.dart';
+
 class MyHomePage extends StatefulWidget {
   const MyHomePage({Key? key}) : super(key: key);
   @override
   _MyHomePageState createState() => _MyHomePageState();
 }
-
 class _MyHomePageState extends State<MyHomePage> {
   late GoogleMapController mapController;
 
@@ -85,17 +85,25 @@ class _MyHomePageState extends State<MyHomePage> {
                               alignment: Alignment.centerLeft,
                               child: Padding(
                                 padding: const EdgeInsets.all(4.0),
-                                child: Container(
-                                  height: 35,
-                                  width: 35,
-                                  decoration: BoxDecoration(
-                                      color: Colors.white,
-                                      shape: BoxShape.circle),
-                                  child: Icon(
-                                    FontAwesomeIcons.mapMarkerAlt,
-                                    size: 15,
-                                    color: Colors.deepOrangeAccent,
-                                  ),
+                                child: Row(
+                                  children: [
+                                    Container(
+                                      height: 35,
+                                      width: 35,
+                                      decoration: BoxDecoration(
+                                          color: Colors.white,
+                                          shape: BoxShape.circle),
+                                      child: Icon(
+                                        FontAwesomeIcons.mapMarkerAlt,
+                                        size: 15,
+                                        color: Colors.deepOrangeAccent,
+                                      ),
+                                    ),
+                                    Text(
+                                      "Current Location",
+                                      style: TextStyle(fontSize: 12,fontWeight: FontWeight.bold),
+                                    ),
+                                  ],
                                 ),
                               ),
                             )
@@ -117,7 +125,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       Expanded(
                         flex: 1,
                         child: InkWell(
-                          onTap: (){
+                          onTap: () {
                             Get.to(RouteSelection());
                           },
                           child: Container(
@@ -173,7 +181,11 @@ class _MyHomePageState extends State<MyHomePage> {
                           ],
                         ),
                       ),
-                      Expanded(flex: 5, child: _listView(size.height)
+                      Expanded(
+                          flex: 5,
+                          child: _listView(
+                            size.height,
+                          )
                           //_homeScroll(size.height),
                           ),
                     ],
@@ -203,9 +215,7 @@ class _MyHomePageState extends State<MyHomePage> {
           scrollDirection: Axis.horizontal,
           children: <Widget>[
             InkWell(
-              onTap: (){
-
-              },
+              onTap: () {},
               child: Container(
                 width: 130.0,
                 decoration: BoxDecoration(
@@ -222,16 +232,27 @@ class _MyHomePageState extends State<MyHomePage> {
                         height: 40,
                         width: 40,
                         decoration: BoxDecoration(
-                            color: Color(0xfffe8550),
-                            shape: BoxShape.circle),
+                            color: Color(0xfffe8550), shape: BoxShape.circle),
                         child: Icon(
                           FontAwesomeIcons.home,
                           color: Colors.white,
                           size: 15,
                         ),
                       ),
-                      Text("Home",style: TextStyle(color:Color(0xfffe8550),fontWeight: FontWeight.bold,fontSize: 10),),
-                      Text("23 minutes",style: TextStyle(color:Colors.black,fontWeight: FontWeight.bold,fontSize: 8),),
+                      Text(
+                        "Home",
+                        style: TextStyle(
+                            color: Color(0xfffe8550),
+                            fontWeight: FontWeight.bold,
+                            fontSize: 10),
+                      ),
+                      Text(
+                        "23 minutes",
+                        style: TextStyle(
+                            color: Colors.black,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 8),
+                      ),
                     ],
                   ),
                 ),
@@ -241,9 +262,7 @@ class _MyHomePageState extends State<MyHomePage> {
               width: 10,
             ),
             InkWell(
-              onTap: (){
-
-              },
+              onTap: () {},
               child: Container(
                 width: 130.0,
                 //color: Colors.orange,
@@ -261,16 +280,29 @@ class _MyHomePageState extends State<MyHomePage> {
                         height: 40,
                         width: 40,
                         decoration: BoxDecoration(
-                            color: Color(0xfffe8550),
-                            shape: BoxShape.circle,),
+                          color: Color(0xfffe8550),
+                          shape: BoxShape.circle,
+                        ),
                         child: Icon(
                           FontAwesomeIcons.shoppingBag,
                           color: Colors.white,
                           size: 15,
                         ),
                       ),
-                      Text("Office",style: TextStyle(color:Color(0xfffe8550),fontWeight: FontWeight.bold,fontSize: 10),),
-                      Text("50 minutes",style: TextStyle(color:Colors.black,fontWeight: FontWeight.bold,fontSize: 8),),
+                      Text(
+                        "Office",
+                        style: TextStyle(
+                            color: Color(0xfffe8550),
+                            fontWeight: FontWeight.bold,
+                            fontSize: 10),
+                      ),
+                      Text(
+                        "50 minutes",
+                        style: TextStyle(
+                            color: Colors.black,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 8),
+                      ),
                     ],
                   ),
                 ),
@@ -280,9 +312,7 @@ class _MyHomePageState extends State<MyHomePage> {
               width: 10,
             ),
             InkWell(
-              onTap: (){
-
-              },
+              onTap: () {},
               child: Container(
                 width: 130.0,
                 //olor: Colors.pink,
