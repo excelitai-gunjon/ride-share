@@ -225,7 +225,7 @@ class RouteSelection extends StatelessWidget {
                 // _customWidget1(
                 //   context,
                 //   FontAwesomeIcons.mapPin,
-                //   "Set in map",
+                //   "Set in map",flutter
                 //   Colors.red,
                 // ),
                 Padding(
@@ -296,6 +296,14 @@ class RouteSelection extends StatelessWidget {
       padding: const EdgeInsets.only(top: 20),
       child: Row(
         children: [
+          title=="Airport"?Transform.rotate(
+            angle: 45,
+            child: Icon(
+              icon,
+              color: color,
+              //Color(0xfffe8550),
+            ),
+          ):
           Icon(
             icon,
             color: color,

@@ -3,7 +3,10 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_navigation/src/extension_navigation.dart';
 import 'package:googler_maps_in_flutter/view/going_to.dart';
-
+import 'package:googler_maps_in_flutter/view/mapCallPages/call_screen1.dart';
+import 'package:googler_maps_in_flutter/view/mapCallPages/massage_screen.dart';
+import 'package:googler_maps_in_flutter/view/show_Notifications.dart';
+//import 'call';
 class Rider extends StatelessWidget {
   const Rider({Key? key}) : super(key: key);
 
@@ -205,7 +208,7 @@ class Rider extends StatelessWidget {
                               flex: 1,
                               child: InkWell(
                                 onTap: () {
-                                  //Get.back(result: "ok");
+                                  Get.to(callscreen());
                                 },
                                 child: CircleAvatar(
                                   backgroundColor: Color(0xfffff4ef),
@@ -222,6 +225,7 @@ class Rider extends StatelessWidget {
                               child: InkWell(
                                 onTap: () {
                                   //Get.back(result: "ok");
+                                  Get.to(MassageScreen());
                                 },
                                 child: CircleAvatar(
                                   backgroundColor: Color(0xfffff4ef),
@@ -244,7 +248,30 @@ class Rider extends StatelessWidget {
                                     //padding:EdgeInsets.all(20)
                                   ),
                                   onPressed: () {
-                                    Get.to(GoingTo());
+                                    //Get.to(GoingTo());
+                                    showDialog(
+                                      context: context,
+                                      builder: (BuildContext context) {
+                                        return Theme(
+                                          data: Theme.of(context).copyWith(
+                                            dialogBackgroundColor: Colors.transparent,
+                                          ),
+                                          child: AlertDialog(
+                                            //backgroundColor: Colors.red,
+                                            contentPadding: EdgeInsets.zero,
+                                            title: Center(
+                                              child: Text(""),
+                                            ),
+                                            content: Column(
+                                              mainAxisSize: MainAxisSize.min,
+                                              children: [
+                                                CancelRequest(),
+                                              ],
+                                            ),
+                                          ),
+                                        );
+                                      },
+                                    );
                                   },
                                   child: Row(
                                     children: [

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_navigation/src/extension_navigation.dart';
-import 'package:googler_maps_in_flutter/view/carousel_slider_example.dart';
+// import 'package:googler_maps_in_flutter/view/carousel_slider_example.dart';
 import 'package:googler_maps_in_flutter/view/find_your_ride_page.dart';
 
 class PackageSelection extends StatefulWidget {
