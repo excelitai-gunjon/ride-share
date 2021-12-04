@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:google_maps_flutter/google_maps_flutter.dart';
+//import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:googler_maps_in_flutter/view/home_page.dart';
 import 'package:flutter/cupertino.dart';
 void main() {

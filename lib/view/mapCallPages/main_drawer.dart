@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get.dart';
+import 'package:googler_maps_in_flutter/tusher/my_trip.dart';
+import 'package:googler_maps_in_flutter/tusher/settings.dart';
+import 'package:googler_maps_in_flutter/tusher/wallet.dart';
 import 'package:googler_maps_in_flutter/view/mapCallPages/edit_profile.dart';
 import 'package:googler_maps_in_flutter/view/mapCallPages/notification.dart';
 class MainDrawer extends StatelessWidget {
@@ -85,45 +88,55 @@ class MainDrawer extends StatelessWidget {
               padding: const EdgeInsets.symmetric(horizontal: 15),
               child: Column(
                 children: [
-                  Row(
-                    children: [
-                      CircleAvatar(
-                        backgroundColor: Color(0xfffe8550),
-                            child: Image(
-                              image: AssetImage('assets/icon_wallet.png'),
-                              // Icon(Icons.watch,
-                              color: Colors.white,
-                        ),
+                  InkWell(
+                    onTap: (){
+                      Get.to(Wallet1());
+                    },
+                    child: Row(
+                      children: [
+                        CircleAvatar(
+                          backgroundColor: Color(0xfffe8550),
+                              child: Image(
+                                image: AssetImage('assets/icon_wallet.png'),
+                                // Icon(Icons.watch,
+                                color: Colors.white,
                           ),
-                      SizedBox(width: 18,),
-                      Text('Wallet',style: TextStyle(
-                          fontSize: 20,
-                          color: Colors.white
-                      ),
-                      ),
+                            ),
+                        SizedBox(width: 18,),
+                        Text('Wallet',style: TextStyle(
+                            fontSize: 20,
+                            color: Colors.white
+                        ),
+                        ),
 
-                   ],
+                     ],
+                    ),
                   ),
                   SizedBox(height: 20,),
-                  Row(
-                    children: [
-                      CircleAvatar(
-                        backgroundColor: Color(0xfffe8550),
-                        child: Image(
-                          image: AssetImage('assets/clock.png'),
-                          // Icon(Icons.watch,
-                          color: Colors.white,
+                  InkWell(
+                    onTap: (){
+                      Get.to(Trip());
+                    },
+                    child: Row(
+                      children: [
+                        CircleAvatar(
+                          backgroundColor: Color(0xfffe8550),
+                          child: Image(
+                            image: AssetImage('assets/clock.png'),
+                            // Icon(Icons.watch,
+                            color: Colors.white,
+                          ),
                         ),
-                      ),
-                      SizedBox(width: 18,),
-                      Text('My Trips',style: TextStyle(
-                          fontSize: 20,
-                          color: Colors.white
-                      ),
-                      ),
+                        SizedBox(width: 18,),
+                        Text('My Trips',style: TextStyle(
+                            fontSize: 20,
+                            color: Colors.white
+                        ),
+                        ),
 
-                    ],
+                      ],
 
+                    ),
                   ),
                   SizedBox(height: 20,),
                   InkWell(
@@ -153,25 +166,30 @@ class MainDrawer extends StatelessWidget {
                   ),
                   SizedBox(height: 20,),
 
-                  Row(
-                    children: [
-                      CircleAvatar(
-                        backgroundColor: Color(0xfffe8550),
-                        child: Image(
-                          image: AssetImage('assets/setting.png'),
-                          // Icon(Icons.watch,
-                          color: Colors.white,
+                  InkWell(
+                    onTap: (){
+                      Get.to(Settings());
+                    },
+                    child: Row(
+                      children: [
+                        CircleAvatar(
+                          backgroundColor: Color(0xfffe8550),
+                          child: Image(
+                            image: AssetImage('assets/setting.png'),
+                            // Icon(Icons.watch,
+                            color: Colors.white,
+                          ),
                         ),
-                      ),
-                      SizedBox(width: 18,),
-                      Text('Setting',style: TextStyle(
-                          fontSize: 20,
-                          color: Colors.white
-                      ),
-                      ),
+                        SizedBox(width: 18,),
+                        Text('Setting',style: TextStyle(
+                            fontSize: 20,
+                            color: Colors.white
+                        ),
+                        ),
 
-                    ],
+                      ],
 
+                    ),
                   ),
                   SizedBox(height: 20,),
                   Row(
