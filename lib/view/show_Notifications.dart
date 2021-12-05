@@ -3,6 +3,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_navigation/src/extension_navigation.dart';
 import 'package:googler_maps_in_flutter/view/find_your_ride_page.dart';
+import 'package:googler_maps_in_flutter/view/finish_ride.dart';
 import 'package:googler_maps_in_flutter/view/going_to.dart';
 import 'package:googler_maps_in_flutter/view/home_page.dart';
 import 'package:googler_maps_in_flutter/view/rider_page.dart';
@@ -733,7 +734,6 @@ class Report extends StatelessWidget {
         children: [
           Text("Report a Problem",style: TextStyle(
             fontSize: 20,
-
             color: Color(0xfffe8550),
             // Color: Colors(0xfffe8550),
           ),
@@ -820,7 +820,7 @@ class Report extends StatelessWidget {
                   ),
                 ),
                 onPressed: (){
-                  Get.to(MyHomePage());
+                  Get.to(FinishRide());
                 },
                 child: Column(
                   children: [

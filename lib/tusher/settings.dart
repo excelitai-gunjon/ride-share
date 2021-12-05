@@ -26,8 +26,7 @@ class _SettingsState extends State<Settings> {
         backgroundColor: Color(0xffcfcfc),
         leading: GestureDetector(
           onTap: () {
-            Navigator.push(
-                context, MaterialPageRoute(builder: (context) => Trip1()));
+            Navigator.pop(context);
           },
           child: const Padding(
             padding: EdgeInsets.symmetric(horizontal: 10),

@@ -22,7 +22,7 @@ class _DarkState extends State<Dark> {
         backgroundColor: Color(0xffcfcfc),
         leading: GestureDetector(
           onTap: () {
-            Navigator.push(context, MaterialPageRoute(builder: (context) => About()));
+            Navigator.pop(context);
           },
           child: const Padding(
             padding: EdgeInsets.symmetric(horizontal: 10),

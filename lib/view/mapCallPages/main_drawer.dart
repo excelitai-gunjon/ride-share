@@ -47,7 +47,6 @@ class MainDrawer extends StatelessWidget {
                        color: Colors.white,
                      ),
                      ),
-
                      Text('zorororonoa@example.com',
                        style: TextStyle(
                          fontSize: 10,

@@ -1,11 +1,12 @@
 import 'dart:async';
-
+import 'package:location/location.dart';
 import 'package:flutter/material.dart';
 //import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 //import 'package:googler_maps_in_flutter/model/home_scroll_list.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:googler_maps_in_flutter/view/mapCallPages/main_drawer.dart';
 import 'package:googler_maps_in_flutter/view/routeSelection_page.dart';
 
@@ -15,25 +16,26 @@ class MyHomePage extends StatefulWidget {
   _MyHomePageState createState() => _MyHomePageState();
 }
 class _MyHomePageState extends State<MyHomePage> {
-  // late GoogleMapController mapController;
-  //
-  // final LatLng _center = const LatLng(45.521563, -122.677433);
-  //
-  // void _onMapCreated(GoogleMapController controller) {
-  //   mapController = controller;
-  // }
-  // Completer<GoogleMapController> _controller = Completer();
-  //
-  // static final CameraPosition _kGooglePlex = CameraPosition(
-  //   target: LatLng(37.42796133580664, -122.085749655962),
-  //   zoom: 14.4746,
-  // );
-  //
-  // static final CameraPosition _kLake = CameraPosition(
-  //     bearing: 192.8334901395799,
-  //     target: LatLng(37.43296265331129, -122.08832357078792),
-  //     tilt: 59.440717697143555,
-  //     zoom: 19.151926040649414);
+  late GoogleMapController mapController;
+
+  final LatLng _center = const LatLng(45.521563,-122.677433);
+
+  void _onMapCreated(GoogleMapController controller) {
+    mapController = controller;
+  }
+  Completer<GoogleMapController> _controller = Completer();
+
+  static final CameraPosition _kGooglePlex = CameraPosition(
+    target: LatLng(23.748224445812014, 90.40275559163155),
+    zoom: 14.4746,
+  );
+
+  static final CameraPosition _kLake = CameraPosition(
+      bearing: 192.8334901395799,
+      target: LatLng(23.748224445812014, 90.40275559163155),
+      tilt: 59.440717697143555,
+      zoom: 19.151926040649414,
+  );
 
   @override
   Widget build(BuildContext context) {
@@ -45,21 +47,21 @@ class _MyHomePageState extends State<MyHomePage> {
       home: Scaffold(
           body: Stack(
             children: [
-              Container(
-                height: size.height,
-                width: size.width,
-                decoration: BoxDecoration(
-                    image: DecorationImage(
-                        image: AssetImage("images/map1.png"),
-                        fit: BoxFit.fill)),
-              ),
-              // GoogleMap(
-              //   mapType: MapType.hybrid,
-              //   initialCameraPosition: _kGooglePlex,
-              //   onMapCreated: (GoogleMapController controller) {
-              //     _controller.complete(controller);
-              //   },
+              // Container(
+              //   height: size.height,
+              //   width: size.width,
+              //   decoration: BoxDecoration(
+              //       image: DecorationImage(
+              //           image: AssetImage("images/map1.png"),
+              //           fit: BoxFit.fill)),
               // ),
+              GoogleMap(
+                mapType: MapType.normal,
+                initialCameraPosition: _kGooglePlex,
+                onMapCreated: (GoogleMapController controller) {
+                  _controller.complete(controller);
+                },
+              ),
               Align(
                 alignment: Alignment.bottomCenter,
                 child: Padding(
@@ -91,15 +93,20 @@ class _MyHomePageState extends State<MyHomePage> {
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
-                                Container(
-                                  height: 40,
-                                  width: 40,
-                                  decoration: BoxDecoration(
-                                      color: Color(0xfffff4ef),
-                                      shape: BoxShape.circle),
-                                  child: Icon(
-                                    FontAwesomeIcons.equals,
-                                    size: 15,
+                                InkWell(
+                                  onTap: (){
+                                    MainDrawer();
+                                  },
+                                  child: Container(
+                                    height: 40,
+                                    width: 40,
+                                    decoration: BoxDecoration(
+                                        color: Color(0xfffff4ef),
+                                        shape: BoxShape.circle),
+                                    child: Icon(
+                                      FontAwesomeIcons.equals,
+                                      size: 15,
+                                    ),
                                   ),
                                 ),
                                 Container(
@@ -360,5 +367,71 @@ class _MyHomePageState extends State<MyHomePage> {
             //Container(width: 160.0, color: Colors.yellow,),
           ],
         ));
+  }
+}
+class MapPage extends StatefulWidget {
+  const MapPage({Key? key}) : super(key: key);
+
+  @override
+  _MapPageState createState() => _MapPageState();
+}
+
+class _MapPageState extends State<MapPage> {
+
+
+   GoogleMapController? _controller;
+   Location currentLocation = Location();
+   Set<Marker> _markers={};
+
+   void getLocation() async{
+     var location = await currentLocation.getLocation();
+     currentLocation.onLocationChanged.listen((LocationData loc){
+
+       _controller?.animateCamera(CameraUpdate.newCameraPosition(new CameraPosition(
+         target: LatLng(loc.latitude ?? 0.0,loc.longitude?? 0.0),
+         zoom: 12.0,
+       )));
+       print(loc.latitude);
+       print(loc.longitude);
+       setState(() {
+         _markers.add(Marker(markerId: MarkerId('Home'),
+             position: LatLng(loc.latitude ?? 0.0, loc.longitude ?? 0.0)
+         ));
+       });
+     });
+   }
+
+   @override
+   void initState(){
+     super.initState();
+     setState(() {
+       getLocation();
+     });
+   }
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Container(
+        height: MediaQuery.of(context).size.height,
+        width: MediaQuery.of(context).size.width,
+        child:GoogleMap(
+          zoomControlsEnabled: false,
+          initialCameraPosition:CameraPosition(
+            target: LatLng(48.8561, 2.2930),
+            zoom: 12.0,
+          ),
+          onMapCreated: (GoogleMapController controller){
+            _controller = controller;
+          },
+          markers: _markers,
+        ) ,
+      ),
+      floatingActionButton: FloatingActionButton(
+        child: Icon(Icons.location_searching,color: Colors.white,),
+        onPressed: (){
+          getLocation();
+        },
+      ),
+    );
   }
 }

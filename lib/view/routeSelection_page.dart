@@ -76,44 +76,49 @@ class RouteSelection extends StatelessWidget {
                                     child: Padding(
                                       padding: const EdgeInsets.symmetric(
                                           horizontal: 20),
-                                      child: Row(
-                                        children: [
-                                          Icon(
-                                            FontAwesomeIcons.mapMarkerAlt,
-                                            color: Color(0xfffe8550),
-                                          ),
-                                          SizedBox(
-                                            width: 8,
-                                          ),
-                                          Column(
-                                            crossAxisAlignment:
-                                                CrossAxisAlignment.start,
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.center,
-                                            children: [
-                                              Text(
-                                                "Corrent Location",
-                                                style: Theme.of(context)
-                                                    .textTheme
-                                                    .bodyText1!
-                                                    .copyWith(
-                                                      color: Colors.grey,
-                                                    ),
-                                              ),
-                                              Text(
-                                                "967 Excel It Ai, Coram,11727",
-                                                style: Theme.of(context)
-                                                    .textTheme
-                                                    .bodyText1!
-                                                    .copyWith(
-                                                        color: Colors.black,
-                                                        fontWeight:
-                                                            FontWeight.bold,
-                                                        fontSize: 15),
-                                              ),
-                                            ],
-                                          ),
-                                        ],
+                                      child: InkWell(
+                                        onTap: (){
+                                          Get.to(RouteSelection());
+                                        },
+                                        child: Row(
+                                          children: [
+                                            Icon(
+                                              FontAwesomeIcons.mapMarkerAlt,
+                                              color: Color(0xfffe8550),
+                                            ),
+                                            SizedBox(
+                                              width: 8,
+                                            ),
+                                            Column(
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.start,
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.center,
+                                              children: [
+                                                Text(
+                                                  "Corrent Location",
+                                                  style: Theme.of(context)
+                                                      .textTheme
+                                                      .bodyText1!
+                                                      .copyWith(
+                                                        color: Colors.grey,
+                                                      ),
+                                                ),
+                                                Text(
+                                                  "967 Excel It Ai, Coram,11727",
+                                                  style: Theme.of(context)
+                                                      .textTheme
+                                                      .bodyText1!
+                                                      .copyWith(
+                                                          color: Colors.black,
+                                                          fontWeight:
+                                                              FontWeight.bold,
+                                                          fontSize: 15),
+                                                ),
+                                              ],
+                                            ),
+                                          ],
+                                        ),
                                       ),
                                     ),
                                   ),

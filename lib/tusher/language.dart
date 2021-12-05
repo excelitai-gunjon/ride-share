@@ -92,8 +92,7 @@ class _LanguageState extends State<Language> {
                       ),
                       child: InkWell(
                         onTap: () {
-                          Navigator.push(context,
-                              MaterialPageRoute(builder: (context) => Help()));
+                          Navigator.pop(context);
                         },
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,

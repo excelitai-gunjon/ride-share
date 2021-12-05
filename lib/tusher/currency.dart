@@ -20,7 +20,7 @@ class _CurrencyState extends State<Currency> {
         backgroundColor: Color(0xffcfcfc),
          leading: GestureDetector(
                   onTap: () {
-                    Navigator.push(context, MaterialPageRoute(builder: (context) => Notification1()));
+                    Navigator.pop(context);
                   },
                   child: const Padding(
                     padding: EdgeInsets.symmetric(horizontal: 10),
